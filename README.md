@@ -1,2 +1,59 @@
-# MYPROJECTS
-PROJECT
+# PROJECT
+----------
+
+*The data for this project is collected from  [http://google.com](Human Activity Recognition database) built from the recordings of 30 subjects performing 6 activities of daily living.
+In this project we clean this data using R codes.*
+
+#Activites of different exercises are recorded#
+
+
+```r
+activities <- read.table("UCI_HAR_Dataset/activity_labels.txt",sep="",header=FALSE)
+colnames(activities) = c("code","name")
+print(activities)
+```
+
+#features are column names of various measurements
+
+```r
+features <- read.table("UCI_HAR_Dataset/features.txt.",sep=" ",header=FALSE)
+colnames(features) =c("code","name")
+head(features)
+```
+
+##PREPARING TEST DATA
+###subject_test file contains activity ids performed on each person
+###x_test contains several columns data of various features
+###y_test contains activity ids performed on each person
+### Above three files contains same no.of records. First 2 files contains same data
+
+##*subjects*
+
+```r
+subjects <- read.table("UCI_HAR_Dataset/test/subject_test.txt",sep=" ",header=FALSE)
+colnames(subjects)=c("sub_id")
+head(subjects)
+```
+
+```r
+tail(subjects)
+```
+
+##*act_columns*
+
+```r
+activity_columns <- read.table("UCI_HAR_Dataset/test/y_test.txt",sep=" ",header=FALSE)
+colnames(activity_columns)=c("act_id")
+head(activity_columns)
+```
+
+```r
+tail(activity_columns)
+```
+
+##*features_col*
+
+```r
+features_columns <- read.table("UCI_HAR_Dataset/test/x_test.txt",sep="",header=FALSE)
+colnames(features_columns)=features$name
+```
