@@ -56,4 +56,8 @@ tail(activity_columns)
 ```{r}
 features_columns <- read.table("UCI_HAR_Dataset/test/x_test.txt",sep="",header=FALSE)
 colnames(features_columns)=features$name
+
+library(dplyr)
+xtest = select( features_columns, contains("std"), contains("Mean"))
+head(xtest,1)
 ```
