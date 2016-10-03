@@ -1,7 +1,7 @@
 # PROJECT
 ----------
 
-*The data for this project is collected from  [http://google.com](Human Activity Recognition database) built from the recordings of 30 subjects performing 6 activities of daily living.
+*The data for this project is collected from  [Human Activity Recognition database](http://google.com) built from the recordings of 30 subjects performing 6 activities of daily living.
 In this project we clean this data using R codes.*
 
 #Activites of different exercises are recorded#
@@ -58,6 +58,9 @@ features_columns <- read.table("UCI_HAR_Dataset/test/x_test.txt",sep="",header=F
 colnames(features_columns)=features$name
 
 library(dplyr)
-xtest = select( features_columns, contains("std"), contains("Mean"))
+
+uniq.columns = unique(colnames(features_columns))
+xtest = select(features_columns, uniq.columns)
+xtest = select( xtest, contains("std"), contains("Mean"))
 head(xtest,1)
 ```

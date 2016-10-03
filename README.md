@@ -1,7 +1,7 @@
 # PROJECT
 ----------
 
-*The data for this project is collected from  [http://google.com](Human Activity Recognition database) built from the recordings of 30 subjects performing 6 activities of daily living.
+*The data for this project is collected from  [Human Activity Recognition database](http://google.com) built from the recordings of 30 subjects performing 6 activities of daily living.
 In this project we clean this data using R codes.*
 
 #Activites of different exercises are recorded#
@@ -125,11 +125,23 @@ features_columns <- read.table("UCI_HAR_Dataset/test/x_test.txt",sep="",header=F
 colnames(features_columns)=features$name
 
 library(dplyr)
-xtest = select( features_columns, contains("std"), contains("Mean"))
+
+uniq.columns = unique(colnames(features_columns))
+xtest = select(features_columns, uniq.columns)
 ```
 
 ```
-## Error in eval(expr, envir, enclos): found duplicated column name: fBodyAcc-bandsEnergy()-1,8, fBodyAcc-bandsEnergy()-9,16, fBodyAcc-bandsEnergy()-17,24, fBodyAcc-bandsEnergy()-25,32, fBodyAcc-bandsEnergy()-33,40, fBodyAcc-bandsEnergy()-41,48, fBodyAcc-bandsEnergy()-49,56, fBodyAcc-bandsEnergy()-57,64, fBodyAcc-bandsEnergy()-1,16, fBodyAcc-bandsEnergy()-17,32, fBodyAcc-bandsEnergy()-33,48, fBodyAcc-bandsEnergy()-49,64, fBodyAcc-bandsEnergy()-1,24, fBodyAcc-bandsEnergy()-25,48, fBodyAcc-bandsEnergy()-1,8, fBodyAcc-bandsEnergy()-9,16, fBodyAcc-bandsEnergy()-17,24, fBodyAcc-bandsEnergy()-25,32, fBodyAcc-bandsEnergy()-33,40, fBodyAcc-bandsEnergy()-41,48, fBodyAcc-bandsEnergy()-49,56, fBodyAcc-bandsEnergy()-57,64, fBodyAcc-bandsEnergy()-1,16, fBodyAcc-bandsEnergy()-17,32, fBodyAcc-bandsEnergy()-33,48, fBodyAcc-bandsEnergy()-49,64, fBodyAcc-bandsEnergy()-1,24, fBodyAcc-bandsEnergy()-25,48, fBodyAccJerk-bandsEnergy()-1,8, fBodyAccJerk-bandsEnergy()-9,16, fBodyAccJerk-bandsEnergy()-17,24, fBodyAccJerk-bandsEnergy()-25,32, fBodyAccJerk-bandsEnergy()-33,40, fBodyAccJerk-bandsEnergy()-41,48, fBodyAccJerk-bandsEnergy()-49,56, fBodyAccJerk-bandsEnergy()-57,64, fBodyAccJerk-bandsEnergy()-1,16, fBodyAccJerk-bandsEnergy()-17,32, fBodyAccJerk-bandsEnergy()-33,48, fBodyAccJerk-bandsEnergy()-49,64, fBodyAccJerk-bandsEnergy()-1,24, fBodyAccJerk-bandsEnergy()-25,48, fBodyAccJerk-bandsEnergy()-1,8, fBodyAccJerk-bandsEnergy()-9,16, fBodyAccJerk-bandsEnergy()-17,24, fBodyAccJerk-bandsEnergy()-25,32, fBodyAccJerk-bandsEnergy()-33,40, fBodyAccJerk-bandsEnergy()-41,48, fBodyAccJerk-bandsEnergy()-49,56, fBodyAccJerk-bandsEnergy()-57,64, fBodyAccJerk-bandsEnergy()-1,16, fBodyAccJerk-bandsEnergy()-17,32, fBodyAccJerk-bandsEnergy()-33,48, fBodyAccJerk-bandsEnergy()-49,64, fBodyAccJerk-bandsEnergy()-1,24, fBodyAccJerk-bandsEnergy()-25,48, fBodyGyro-bandsEnergy()-1,8, fBodyGyro-bandsEnergy()-9,16, fBodyGyro-bandsEnergy()-17,24, fBodyGyro-bandsEnergy()-25,32, fBodyGyro-bandsEnergy()-33,40, fBodyGyro-bandsEnergy()-41,48, fBodyGyro-bandsEnergy()-49,56, fBodyGyro-bandsEnergy()-57,64, fBodyGyro-bandsEnergy()-1,16, fBodyGyro-bandsEnergy()-17,32, fBodyGyro-bandsEnergy()-33,48, fBodyGyro-bandsEnergy()-49,64, fBodyGyro-bandsEnergy()-1,24, fBodyGyro-bandsEnergy()-25,48, fBodyGyro-bandsEnergy()-1,8, fBodyGyro-bandsEnergy()-9,16, fBodyGyro-bandsEnergy()-17,24, fBodyGyro-bandsEnergy()-25,32, fBodyGyro-bandsEnergy()-33,40, fBodyGyro-bandsEnergy()-41,48, fBodyGyro-bandsEnergy()-49,56, fBodyGyro-bandsEnergy()-57,64, fBodyGyro-bandsEnergy()-1,16, fBodyGyro-bandsEnergy()-17,32, fBodyGyro-bandsEnergy()-33,48, fBodyGyro-bandsEnergy()-49,64, fBodyGyro-bandsEnergy()-1,24, fBodyGyro-bandsEnergy()-25,48
+## Error: All select() inputs must resolve to integer column positions.
+## The following do not:
+## *  uniq.columns
+```
+
+```r
+xtest = select( xtest, contains("std"), contains("Mean"))
+```
+
+```
+## Error in select_(.data, .dots = lazyeval::lazy_dots(...)): object 'xtest' not found
 ```
 
 ```r
